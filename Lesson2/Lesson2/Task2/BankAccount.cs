@@ -1,31 +1,28 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Lesson2.Task1
+namespace Lesson2.Task2
 {
-    //  Создать класс счет в банке с закрытыми полями:
-    //      номер счета,
-    //      баланс,
-    //      тип банковского счета (использовать перечислимый тип).
-    //  Предусмотреть методы для доступа к данным – заполнения и чтения.
-    //  Создать объект класса,
-    //  заполнить его поля
-    //  и вывести информацию об объекте класса на печать.
-
+    //  Изменить класс счет в банке из упражнения таким образом, чтобы
+    //  номер счета генерировался сам и был уникальным.
+    //  Для этого надо создать в классе статическую переменную
+    //  и метод, который увеличивает значение этого переменной.
 
     enum BankAccountType
     {
-        current   = 1,
-        credit    = 2,
-        deposit   = 3,
+        current = 1,
+        credit = 2,
+        deposit = 3,
         budgetary = 4
-    }    
+    }
 
     internal class BankAccount
     {
         /// <summary>
         /// Номер счета
         /// </summary>
-        private int _accountId;
+        private static int _accountId;
 
         /// <summary>
         /// Баланс
@@ -43,18 +40,18 @@ namespace Lesson2.Task1
         /// <param name="accountId"></param>
         /// <param name="bankAccountType"></param>
         /// <param name="currentBalance"></param>
-        public void InitiateAccount(int accountId, BankAccountType bankAccountType, decimal currentBalance)
+        public void InitiateAccount(BankAccountType bankAccountType, decimal currentBalance)
         {
-            _accountId = accountId;
+            _accountId++;
 
             _bankAccountType = bankAccountType;
 
             _currentBalance = currentBalance;
         }
 
-        public int Get_AccountId() 
+        public int Get_AccountId()
         {
-            return _accountId; 
+            return _accountId;
         }
 
         public decimal Get_CurrentBalance()
@@ -73,3 +70,4 @@ namespace Lesson2.Task1
         }
     }
 }
+
