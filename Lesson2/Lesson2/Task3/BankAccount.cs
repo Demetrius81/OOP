@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lesson2.Task2
+namespace Lesson2.Task3
 {
-    //  Изменить класс счет в банке из упражнения таким образом, чтобы
-    //  номер счета генерировался сам и был уникальным.
-    //  Для этого надо создать в классе статическую переменную
-    //  и метод, который увеличивает значение этого переменной.
-
+    //В классе банковский счет удалить методы заполнения полей.
+    //Вместо этих методов создать конструкторы.
+    //Переопределить конструктор по умолчанию,
+    //создать конструктор для заполнения поля баланс,
+    //конструктор для заполнения поля тип банковского счета,
+    //конструктор для заполнения баланса и типа банковского счета.
+    //Каждый конструктор должен вызывать метод, генерирующий номер счета.
     enum BankAccountType
     {
         current = 1,
@@ -34,13 +36,27 @@ namespace Lesson2.Task2
         /// </summary>
         private BankAccountType _bankAccountType;
 
-        /// <summary>
-        /// Метод для заполнения полей класса
-        /// </summary>
-        /// <param name="accountId"></param>
-        /// <param name="bankAccountType"></param>
-        /// <param name="currentBalance"></param>
-        public void InitiateAccount(BankAccountType bankAccountType, decimal currentBalance)
+
+        public BankAccount()
+        {
+            IncrementAccountId();
+        }
+
+        public BankAccount(decimal currentBalance)
+        {
+            IncrementAccountId();
+
+            _currentBalance = currentBalance;
+        }
+
+        public BankAccount(BankAccountType bankAccountType)
+        {
+            IncrementAccountId();
+
+            _bankAccountType = bankAccountType;
+        }
+
+        public BankAccount(BankAccountType bankAccountType, decimal currentBalance)
         {
             IncrementAccountId();
 
@@ -48,7 +64,7 @@ namespace Lesson2.Task2
 
             _currentBalance = currentBalance;
         }
-
+        
         public void IncrementAccountId()
         {
             _accountId++;
@@ -75,4 +91,3 @@ namespace Lesson2.Task2
         }
     }
 }
-

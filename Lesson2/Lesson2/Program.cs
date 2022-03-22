@@ -12,6 +12,39 @@ namespace Lesson2
             {
                 Task2Demo();
             }
+
+
+
+        }
+
+        static void Task4Demo()
+        {
+            Task4.BankAccountLogic bankAccountLogic = new Task4.BankAccountLogic();
+
+            Task4.BankAccount bankAccount = bankAccountLogic.GetBankAccount();
+
+            Console.WriteLine($"Счет номер: {bankAccount.AccountId}");
+
+            Console.WriteLine($"Тип счета: {bankAccount.BankAccountType}");
+
+            Console.WriteLine($"Текущий баланс: {bankAccount.CurrentBalance}");
+
+            Console.ReadKey();
+        }
+
+        static void Task3Demo()
+        {
+            Task3.BankAccountLogic bankAccountLogic = new Task3.BankAccountLogic();
+
+            Task3.BankAccount bankAccount = bankAccountLogic.GetBankAccount();
+
+            Console.WriteLine($"Счет номер: {bankAccount.Get_AccountId()}");
+
+            Console.WriteLine($"Тип счета: {bankAccount.Get_BankAccountType()}");
+
+            Console.WriteLine($"Текущий баланс: {bankAccount.Get_CurrentBalance()}");
+
+            Console.ReadKey();
         }
 
         static void Task2Demo()
