@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Lesson2.Task3
 {
@@ -51,6 +49,8 @@ namespace Lesson2.Task3
             Console.WriteLine($"Тип счета: {bankAccount4.Get_BankAccountType()}");
 
             Console.WriteLine($"Текущий баланс: {bankAccount4.Get_CurrentBalance()}");
+
+            Console.WriteLine($"To continue press any key...");
 
             Console.ReadKey();
         }

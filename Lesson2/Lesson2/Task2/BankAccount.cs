@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Lesson2.Task2
 {
     //  Изменить класс счет в банке из упражнения таким образом, чтобы

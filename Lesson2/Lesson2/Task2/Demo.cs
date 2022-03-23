@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+using
 namespace Lesson2.Task2
 {
     internal class Demo
@@ -31,6 +29,8 @@ namespace Lesson2.Task2
             Console.WriteLine($"Тип счета: {bankAccount2.Get_BankAccountType()}");
 
             Console.WriteLine($"Текущий баланс: {bankAccount2.Get_CurrentBalance()}");
+
+            Console.WriteLine($"To continue press any key...");
 
             Console.ReadKey();
         }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Lesson2.Task4
 {
     //  В классе все методы для заполнения и получения значений полей заменить на свойства.

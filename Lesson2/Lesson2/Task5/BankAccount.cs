@@ -128,13 +128,12 @@ namespace Lesson2.Task5
         }
 
         /// <summary>
-        /// Перегрузка метода ToString
+        /// Метод ToString
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
-            return $"Счет номер: {_accountId}, тип счета: {_bankAccountType}, текущий баланс: {_currentBalance:F2}.";
-        }
+        public override string ToString() => $"Счет номер: {_accountId}, " +
+                                             $"тип счета: {_bankAccountType}, " +
+                                             $"текущий баланс: {_currentBalance:F2}.";
 
         /// <summary>
         /// Метод пополняет счет

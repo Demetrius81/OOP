@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Lesson2.Task3
 {
     //В классе банковский счет удалить методы заполнения полей.

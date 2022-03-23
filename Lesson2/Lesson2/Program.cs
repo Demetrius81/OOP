@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace Lesson2
 {
     internal class Program

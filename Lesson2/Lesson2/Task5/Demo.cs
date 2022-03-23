@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Lesson2.Task5
 {
@@ -10,7 +8,9 @@ namespace Lesson2.Task5
         {
             Console.Clear();
 
-            Console.WriteLine($"Демонстрация работы пятой задачи.\nДобавлены методы снятия и пополнения счета. Переопределен ToString.\nПри выходе из программы текущий ID сохраняется в файл accid.bin.");
+            Console.WriteLine($"Демонстрация работы пятой задачи.\n" +
+                              $"Добавлены методы снятия и пополнения счета. Переопределен ToString.\n" +
+                              $"При выходе из программы текущий ID сохраняется в файл accid.bin.");
 
             Console.WriteLine();
 
@@ -47,6 +47,8 @@ namespace Lesson2.Task5
             bankAccount2.AddCurrentBalance(50000);
 
             Console.WriteLine(bankAccount2.ToString());
+
+            Console.WriteLine($"To continue press any key...");
 
             Console.ReadKey();
         }
