@@ -1,14 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Lesson2.Task4
+namespace Lesson2.Task5
 {
-    //  В классе все методы для заполнения и получения значений полей заменить на свойства.
-    //  Написать тестовый пример.
+    //  * Добавить в класс счет в банке два метода:
+    //  снять со счета и
+    //  положить на счет.
+    //  Метод снять со счета проверяет, возможно ли снять запрашиваемую сумму,
+    //  и в случае положительного результата изменяет баланс.
 
     /// <summary>
-    /// Типы счета
+    /// Типы вкладов
     /// </summary>
     enum BankAccountType
     {
@@ -21,29 +24,28 @@ namespace Lesson2.Task4
     /// <summary>
     /// Класс банковский счет
     /// </summary>
+    [Serializable]
     internal class BankAccount
     {
         #region Fields and Properties
-
-        /// <summary>
-        /// Статическое поле для хранения последнего созданного номера счета
-        /// </summary>
-        private static int _id;
-
+        
         /// <summary>
         /// Номер счета
-        /// </summary>
+        /// </summary>        
         private static int _accountId;
 
         /// <summary>
         /// Баланс
         /// </summary>
+        [NonSerialized]
         private decimal _currentBalance;
 
         /// <summary>
         /// Тип банковского счета
         /// </summary>
+        [NonSerialized]
         private BankAccountType _bankAccountType;
+
 
         internal int AccountId { get => _accountId; }
 
@@ -106,9 +108,57 @@ namespace Lesson2.Task4
         /// </summary>
         private void IncrementAccountId()
         {
-            _id++;
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
 
-            _accountId = _id;
+            FileInfo file = new FileInfo("accid.bin");
+
+            if (file.Exists)
+            {
+                using (FileStream fileStream = new FileStream("accid.bin", FileMode.OpenOrCreate))
+                {
+                    _accountId = (int)binaryFormatter.Deserialize(fileStream);
+                }
+            }
+            _accountId++;
+
+            using (FileStream fileStream = new FileStream("accid.bin", FileMode.OpenOrCreate))
+            {
+                binaryFormatter.Serialize(fileStream, _accountId);
+            }
+        }
+
+        /// <summary>
+        /// Перегрузка метода ToString
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"Счет номер: {_accountId}, тип счета: {_bankAccountType}, текущий баланс: {_currentBalance:F2}.";
+        }
+
+        /// <summary>
+        /// Метод пополняет счет
+        /// </summary>
+        /// <param name="amountOfMoney">Сумма</param>
+        public void AddCurrentBalance(decimal amountOfMoney)
+        {
+            CurrentBalance += amountOfMoney;
+        }
+
+        /// <summary>
+        /// Метод снимает деньги со счета
+        /// </summary>
+        /// <param name="amountOfMoney">Сумма</param>
+        /// <returns>Достаточно ли денег на счете</returns>
+        public bool WithdrawCurrentBalance(decimal amountOfMoney)
+        {
+            if (amountOfMoney < CurrentBalance || BankAccountType == BankAccountType.credit)
+            {
+                CurrentBalance -= amountOfMoney;
+
+                return true;
+            }
+            return false;
         }
     }
 }

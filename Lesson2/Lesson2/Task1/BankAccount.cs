@@ -11,15 +11,20 @@ namespace Lesson2.Task1
     //  заполнить его поля
     //  и вывести информацию об объекте класса на печать.
 
-
+    /// <summary>
+    /// Типы счета
+    /// </summary>
     enum BankAccountType
     {
-        current   = 1,
-        credit    = 2,
-        deposit   = 3,
+        current = 1,
+        credit = 2,
+        deposit = 3,
         budgetary = 4
-    }    
+    }
 
+    /// <summary>
+    /// Класс банковский счет
+    /// </summary>
     internal class BankAccount
     {
         /// <summary>
@@ -52,24 +57,31 @@ namespace Lesson2.Task1
             _currentBalance = currentBalance;
         }
 
-        public int Get_AccountId() 
+        /// <summary>
+        /// Метод возвращает номер счета
+        /// </summary>
+        /// <returns>Номер счета</returns>
+        public int Get_AccountId()
         {
-            return _accountId; 
+            return _accountId;
         }
 
+        /// <summary>
+        /// Метод возвращает текущий баланс счета
+        /// </summary>
+        /// <returns>текущий баланс счета</returns>
         public decimal Get_CurrentBalance()
         {
             return _currentBalance;
         }
 
+        /// <summary>
+        /// Метод возвращает тип банковского счета
+        /// </summary>
+        /// <returns>тип банковского счета</returns>
         public BankAccountType Get_BankAccountType()
         {
             return _bankAccountType;
-        }
-
-        public override string ToString()
-        {
-            return $"Счет номер: {_accountId}, тип счета: {_bankAccountType}, текущий баланс: {_currentBalance}.";
         }
     }
 }
