@@ -9,6 +9,8 @@ namespace Lesson3
             Task1.Demo.TaskDemo();
 
             Task2.Demo.TaskDemo();
+
+            Task3.Demo.TaskDemo();
         }
     }
 }
