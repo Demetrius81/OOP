@@ -9,9 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Constructions", "..\Buildin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo", "..\Demo\Demo.csproj", "{8E7B5096-35BE-4D4E-AF74-8532D6F27AA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factory", "..\Factory\Factory.csproj", "{C3440528-B6AB-4117-9CC3-5FE3168BE385}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "..\Interfaces\Interfaces.csproj", "{0A072C76-1B18-476A-BCDB-9C7CDABC60A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "..\Interfaces\Interfaces.csproj", "{0A072C76-1B18-476A-BCDB-9C7CDABC60A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{8E7B5096-35BE-4D4E-AF74-8532D6F27AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E7B5096-35BE-4D4E-AF74-8532D6F27AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E7B5096-35BE-4D4E-AF74-8532D6F27AA2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3440528-B6AB-4117-9CC3-5FE3168BE385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3440528-B6AB-4117-9CC3-5FE3168BE385}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3440528-B6AB-4117-9CC3-5FE3168BE385}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3440528-B6AB-4117-9CC3-5FE3168BE385}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0A072C76-1B18-476A-BCDB-9C7CDABC60A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0A072C76-1B18-476A-BCDB-9C7CDABC60A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A072C76-1B18-476A-BCDB-9C7CDABC60A2}.Release|Any CPU.ActiveCfg = Release|Any CPU

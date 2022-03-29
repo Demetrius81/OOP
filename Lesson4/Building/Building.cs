@@ -5,7 +5,7 @@ namespace Constructions
     /// <summary>
     /// Класс здание
     /// </summary>
-    public class Building : IBuilding
+    internal class Building : IBuilding
     {
         /*
          
@@ -21,7 +21,7 @@ namespace Constructions
          V Добавить методы вычисления высоты этажа, 
          V количества квартир в подъезде, 
          V количества квартир на этаже 
-       ??? и т.д. ??? Это значит придумай себе работу сам ?
+       ??? и т.д. ??? Это значит придумай себе работу сам :)
          V Предусмотреть возможность, чтобы уникальный номер здания генерировался программно.
          V Для этого в классе предусмотреть статическое поле, которое бы хранило последний
         использованный номер здания, и предусмотреть метод, который увеличивал бы
@@ -61,12 +61,14 @@ namespace Constructions
         /// <param name="height">Высота здания</param>
         /// <param name="numberOfFloors">Количество этажей</param>
         /// <param name="numberOfEntrances">Количество подъездов</param>
-        /// <param name="numberOfApartments">Количество квартир</param>
-        public Building(decimal height, int numberOfFloors, int numberOfEntrances, int numberOfApartments)
+        /// <param name="numberOfApartments">Количество квартир должно быть кратно произведению количества этажей и количества подъездов</param>
+        /// <exception cref="ArgumentException">исключение при неверном вводе количества квартир</exception>
+        internal protected Building(decimal height, int numberOfFloors, int numberOfEntrances, int numberOfApartments)
         {
             if (numberOfApartments % (numberOfEntrances * numberOfFloors) != 0)
             {
-                throw new ArgumentException("Количество квартир должно быть кратно произведению количества этажей и количества подъездов");
+                throw new ArgumentException($"Количество квартир должно быть кратно" +
+                    $" произведению количества этажей и количества подъездов");
             }
             IncrementID();
             _idBuilding = _id;
@@ -99,7 +101,11 @@ namespace Constructions
         /// <returns>Количество квартир на этаже</returns>
         public int NumberOfApartmentOnFloorCalculate() => _numberOfApartments / _numberOfFloors;
 
+        /// <summary>
+        /// Перегруженный метод ToString
+        /// </summary>
+        /// <returns></returns>
         public override string ToString() => $" Здание номер {_idBuilding}";
-        
+
     }
 }
