@@ -2,102 +2,72 @@
 
 namespace Constructions
 {
-    public class Building
+    /// <summary>
+    /// Класс здание
+    /// </summary>
+    public class Building : IBuilding
     {
-        /*Реализовать класс для описания здания (
-         * уникальный номер здания, 
-         * высота,
-         * этажность, 
-         * количество квартир, 
-         * подъездов). 
-         * Поля сделать закрытыми,
-         * предусмотреть методы для заполнения полей и 
-         * методы получения значений полей для печати.
-         * Добавить методы вычисления высоты этажа, 
-         * количества квартир в подъезде, 
-         * количества квартир на этаже 
-         * и т.д.                              ???
-         * Предусмотреть возможность, чтобы уникальный номер здания генерировался программно.
-         * Для этого в классе предусмотреть статическое поле, которое бы хранило последний
+        /*
+         
+         V Реализовать класс для описания здания (
+         V уникальный номер здания, 
+         V высота,
+         V этажность, 
+         V количество квартир, 
+         V подъездов). 
+         V Поля сделать закрытыми,
+         V предусмотреть методы для заполнения полей и 
+         V методы получения значений полей для печати.
+         V Добавить методы вычисления высоты этажа, 
+         V количества квартир в подъезде, 
+         V количества квартир на этаже 
+       ??? и т.д. ??? Это значит придумай себе работу сам ?
+         V Предусмотреть возможность, чтобы уникальный номер здания генерировался программно.
+         V Для этого в классе предусмотреть статическое поле, которое бы хранило последний
         использованный номер здания, и предусмотреть метод, который увеличивал бы
-        значение этого поля.*/
+        значение этого поля.
+        
+         */
 
         #region Fields and Properties
 
         private static int _id;
 
+        private readonly decimal _height;
+
         private readonly int _idBuilding;
-
-        private readonly int _height;
-
-        private readonly int _numberOfFloors;
 
         private readonly int _numberOfApartments;
 
         private readonly int _numberOfEntrances;
 
-        private int _numberOfApartmentInEntrance;
+        private readonly int _numberOfFloors;
 
-        private int _numberOfApartmentOnFloor;
+        public decimal Height { get => _height; }
 
-        private decimal _floorHeight;
-
-        /// <summary>
-        /// Номер здания
-        /// </summary>
         public int IdBuilding { get => _idBuilding; }
 
-        /// <summary>
-        /// Высота здания
-        /// </summary>
-        public int Height { get => _height; }
-
-        /// <summary>
-        /// Количество тажей
-        /// </summary>
-        public int NumberOfFloors { get => _numberOfFloors; }
-
-        /// <summary>
-        /// Количество квартир
-        /// </summary>
         public int NumberOfApartments { get => _numberOfApartments; }
 
-        /// <summary>
-        /// Количество подъездов
-        /// </summary>
         public int NumberOfEntrances { get => _numberOfEntrances; }
 
-        /// <summary>
-        /// Количество квартир в подъезде
-        /// </summary>
-        public int NumberOfApartmentInEntrance
-        {
-            get => _numberOfApartmentInEntrance;
-            set => _numberOfApartmentInEntrance = NumberOfApartmentInEntranceCalculate();
-        }
-
-        /// <summary>
-        /// Количество квартир на этаже
-        /// </summary>
-        public int NumberOfApartmentOnFloor
-        {
-            get => _numberOfApartmentOnFloor;
-            set => _numberOfApartmentOnFloor = NumberOfApartmentOnFloorCalculate();
-        }
-
-        /// <summary>
-        /// Высота одного этажа
-        /// </summary>
-        public decimal FloorHeight
-        {
-            get => _floorHeight;
-            set => _floorHeight = FloorHeightCalculate();
-        }
+        public int NumberOfFloors { get => _numberOfFloors; }
 
         #endregion
 
-        public Building(int height, int numberOfFloors = 1, int numberOfApartments = 1, int numberOfEntrances = 1)
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="height">Высота здания</param>
+        /// <param name="numberOfFloors">Количество этажей</param>
+        /// <param name="numberOfEntrances">Количество подъездов</param>
+        /// <param name="numberOfApartments">Количество квартир</param>
+        public Building(decimal height, int numberOfFloors, int numberOfEntrances, int numberOfApartments)
         {
+            if (numberOfApartments % (numberOfEntrances * numberOfFloors) != 0)
+            {
+                throw new ArgumentException("Количество квартир должно быть кратно произведению количества этажей и количества подъездов");
+            }
             IncrementID();
             _idBuilding = _id;
             _height = height;
@@ -112,22 +82,24 @@ namespace Constructions
         private void IncrementID() => _id++;
 
         /// <summary>
+        /// Метод вычисления высоты одного этажа
+        /// </summary>
+        /// <returns>Высота одного этажа</returns>
+        public decimal FloorHeightCalculate() => _height / _numberOfFloors;
+
+        /// <summary>
         /// Метод вычисления количества квартир в подъезде
         /// </summary>
         /// <returns>Количество квартир в подъезде</returns>
-        private int NumberOfApartmentInEntranceCalculate() => _numberOfApartments / _numberOfEntrances;
+        public int NumberOfApartmentInEntranceCalculate() => _numberOfApartments / _numberOfEntrances;
 
         /// <summary>
         /// Метод вычисления количества квартир на этаже
         /// </summary>
         /// <returns>Количество квартир на этаже</returns>
-        private int NumberOfApartmentOnFloorCalculate() => _numberOfApartments / _numberOfFloors;
+        public int NumberOfApartmentOnFloorCalculate() => _numberOfApartments / _numberOfFloors;
 
-        /// <summary>
-        /// Метод вычисления высоты одного этажа
-        /// </summary>
-        /// <returns>Высота одного этажа</returns>
-        private decimal FloorHeightCalculate() => _height / _numberOfFloors;
-
+        public override string ToString() => $" Здание номер {_idBuilding}";
+        
     }
 }

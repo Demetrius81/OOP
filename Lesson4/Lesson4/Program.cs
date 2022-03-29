@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Constructions;
 
 namespace Lesson4
 {
@@ -6,7 +6,7 @@ namespace Lesson4
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Demo.Test();
         }
     }
 }
