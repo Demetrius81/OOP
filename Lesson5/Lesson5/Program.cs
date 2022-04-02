@@ -6,7 +6,9 @@ namespace Lesson5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Demo.TestFractions();
+            Demo.TestComplex();
         }
+        
     }
 }
