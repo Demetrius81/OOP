@@ -4,18 +4,24 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Lesson3.Task1
 {
-    //В класс банковский счет, созданный в упражнениях, добавить метод,
-    //который переводит деньги с одного счета на другой.
-    //У метода два параметра:
-    //ссылка на объект класса банковский счет откуда снимаются деньги,
-    //второй параметр – сумма.
+    /*
+     V Для класса банковский счет переопределить операторы == 
+     V и != для сравнения информации в двух счетах. 
+     V Переопределить метод Equals аналогично оператору ==, 
+     V не забыть переопределить метод GetHashCode(). 
+     V Переопределить метод ToString() для печати информации о счете. 
+     V Протестировать функционирование переопределенных методов и операторов на простом примере. 
+     */
 
+    /// <summary>
+    /// Тип банковского счета
+    /// </summary>
     enum BankAccountType
     {
-        current = 1,
-        credit = 2,
-        deposit = 3,
-        budgetary = 4
+        current = 0x0001,
+        credit = 0x0010,
+        deposit = 0x0100,
+        budgetary = 0x1000
     }
 
     /// <summary>
@@ -152,8 +158,8 @@ namespace Lesson3.Task1
             BankAccount acc = obj as BankAccount;
 
             if (acc as BankAccount is null)
-            { 
-                return false; 
+            {
+                return false;
             }
             return acc._currentBalance == this._currentBalance && acc._accountId == this._accountId;
         }
@@ -176,10 +182,8 @@ namespace Lesson3.Task1
         /// Метод пополняет счет
         /// </summary>
         /// <param name="amountOfMoney">Сумма</param>
-        public void AddCurrentBalance(decimal amountOfMoney)
-        {
-            CurrentBalance += amountOfMoney;
-        }
+        public void AddCurrentBalance(decimal amountOfMoney) => _currentBalance += amountOfMoney;
+
 
         /// <summary>
         /// Метод снимает деньги со счета
@@ -188,7 +192,7 @@ namespace Lesson3.Task1
         /// <returns>Достаточно ли денег на счете</returns>
         public bool WithdrawCurrentBalance(decimal amountOfMoney)
         {
-            if (amountOfMoney < CurrentBalance || BankAccountType == BankAccountType.credit)
+            if (amountOfMoney < _currentBalance || BankAccountType == BankAccountType.credit)
             {
                 CurrentBalance -= amountOfMoney;
 
@@ -206,8 +210,8 @@ namespace Lesson3.Task1
         private bool СheckingЕhePossibilityTransfer(BankAccount accountFrom, decimal amountOfMoney)
         {
             if ((amountOfMoney >= 0) && (accountFrom != null) &&
-               ((accountFrom.CurrentBalance - amountOfMoney) >= 0) &&
-               ((this.CurrentBalance + amountOfMoney) < Decimal.MaxValue))
+               ((accountFrom._currentBalance - amountOfMoney) >= 0) &&
+               ((this._currentBalance + amountOfMoney) < Decimal.MaxValue))
             {
                 return true;
             }
@@ -230,12 +234,29 @@ namespace Lesson3.Task1
                 }
                 finally
                 {
-                    accountFrom.CurrentBalance -= amountOfMoney;
+                    accountFrom._currentBalance -= amountOfMoney;
 
-                    this.CurrentBalance += amountOfMoney;
+                    this._currentBalance += amountOfMoney;
                 }
             }
             return isTransferApproved;
         }
+
+        /// <summary>
+        /// Определение оператора ==
+        /// </summary>
+        /// <param name="bankAccount1">BankAccount аккаунт 1</param>
+        /// <param name="bankAccount2">BankAccount аккаунт 2</param>
+        /// <returns>bool результат</returns>
+        public static bool operator ==(BankAccount bankAccount1, BankAccount bankAccount2) => bankAccount1.Equals(bankAccount2);
+
+        /// <summary>
+        /// Определение оператора !=
+        /// </summary>
+        /// <param name="bankAccount1">BankAccount аккаунт 1</param>
+        /// <param name="bankAccount2">BankAccount аккаунт 2</param>
+        /// <returns>bool результат</returns>
+        public static bool operator !=(BankAccount bankAccount1, BankAccount bankAccount2) => !bankAccount1.Equals(bankAccount2);
+        
     }
 }

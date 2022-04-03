@@ -11,8 +11,8 @@ namespace Lesson3.Task1
             Console.Clear();
 
             Console.WriteLine($"Демонстрация работы первой задачи.\n" +
-                              $"Добавлены методы перевода денег со счета на счет\n" +
-                              $"и проверки возможности перевода денег со счета на счет");
+                              $"Переопределить операторы == и !=.\n" +
+                              $"Переопределить методы Equals() GetHashCode() ToString().");
 
             Console.WriteLine();
 
@@ -26,43 +26,29 @@ namespace Lesson3.Task1
 
             BankAccount bankAccount2 = new BankAccount(BankAccountType.deposit, 30000);
 
-            Console.WriteLine(bankAccount2.ToString());
+            Console.WriteLine("Работа оператора ==");
 
-            Console.WriteLine($"Переводим 12500 со счета {bankAccount1.AccountId} на счет {bankAccount2.AccountId}");
+            Console.WriteLine(bankAccount2==bankAccount1);
 
-            bool isItDone = bankAccount2.Transfer(bankAccount1, 12500);
+            Console.WriteLine("Работа оператора !=");
 
-            Console.WriteLine(ResultOperation(isItDone, "Операция не выполнена."));
+            Console.WriteLine(bankAccount2 != bankAccount1);
 
-            Console.WriteLine(bankAccount1.ToString());
+            Console.WriteLine("Работа метода Equals");
 
-            Console.WriteLine(bankAccount2.ToString());
+            Console.WriteLine(bankAccount2.Equals(bankAccount1));
 
-            Console.WriteLine($"Переводим 50000 со счета {bankAccount2.AccountId} на счет {bankAccount1.AccountId}");
+            Console.WriteLine("Работа метода GetHashCode");
 
-            isItDone = bankAccount1.Transfer(bankAccount2, 50000);
+            Console.WriteLine(bankAccount2.GetHashCode());
 
-            Console.WriteLine(ResultOperation(isItDone, "Операция не выполнена."));
-
-            Console.WriteLine(bankAccount1.ToString());
+            Console.WriteLine("Работа метода ToString");
 
             Console.WriteLine(bankAccount2.ToString());
 
             Console.WriteLine($"To continue press any key...");
 
             Console.ReadKey();
-        }
-
-        private static string ResultOperation(bool isDone, string message)
-        {
-            if (isDone)
-            {
-                return "Операция прошла успешно";
-            }
-            else
-            {
-                return message;
-            }
         }
     }
 }
