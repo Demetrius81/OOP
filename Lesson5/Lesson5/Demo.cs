@@ -1,15 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Lesson5
 {
+    /// <summary>
+    /// Демонстрационный класс
+    /// </summary>
     public class Demo
     {
         /*
         V Протестировать на простом примере.
         */
 
+        /// <summary>
+        /// Тестовый метод для рациональных чисел
+        /// </summary>
         public static void TestFractions()
         {
             Console.WriteLine("Тестовый пример класса рациональных чисел");
@@ -64,6 +68,9 @@ namespace Lesson5
 
         }
 
+        /// <summary>
+        /// Тестовый метод для комплексных чисел
+        /// </summary>
         public static void TestComplex()
         {
             Console.WriteLine("Тестовый пример класса комплексных чисел");
@@ -93,8 +100,6 @@ namespace Lesson5
             Console.WriteLine("Для продолжения нажмите любую клавишу...");
 
             Console.ReadKey();
-
         }
-
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Lesson5
 {
+    /// <summary>
+    /// Класс комплексных чисел
+    /// </summary>
     public class Complex
     {
         /*
@@ -16,9 +17,10 @@ namespace Lesson5
          V Переопределить метод ToString() для комплексного числа. 
          V Протестировать на простом примере.
 
-
-
         */
+
+        #region Fields and properties
+
         private double _real;
 
         private double _imaginary;
@@ -32,6 +34,10 @@ namespace Lesson5
         /// Мнимая часть комплексного числа
         /// </summary>
         public double Imaginary { get => _imaginary; set => _imaginary = value; }
+
+        #endregion
+
+        #region Ctors
 
         public Complex()
         {
@@ -47,7 +53,13 @@ namespace Lesson5
             _imaginary = imaginary;
         }
 
+        #endregion
 
+        /// <summary>
+        /// Переопределение метода Equals
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -63,6 +75,11 @@ namespace Lesson5
             return a._real == this._real && a._imaginary == this._imaginary;
         }
 
+        /// <summary>
+        /// Перегрузка метода Equals
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public bool Equals(Complex a)
         {
             if (a == null)
@@ -72,6 +89,24 @@ namespace Lesson5
             return a._real == this._real && a._imaginary == this._imaginary;
         }
 
+        /// <summary>
+        /// Переопределение метода ToString
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() => $"{this._real} + i{this._imaginary}";
+
+        /// <summary>
+        /// Переопределение метода GetHashCode
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode() => _real.GetHashCode() ^ _imaginary.GetHashCode();
+
+        /// <summary>
+        /// Метод сложения комплексных чисел
+        /// </summary>
+        /// <param name="a">Комплексное число</param>
+        /// <param name="b">Комплексное число</param>
+        /// <returns>Результат</returns>
         private static Complex Sum(Complex a, Complex b)
         {
             CheckIsNull(a, b);
@@ -85,6 +120,12 @@ namespace Lesson5
             return result;
         }
 
+        /// <summary>
+        /// Метод умножения комплексных чисел
+        /// </summary>
+        /// <param name="a">Комплексное число</param>
+        /// <param name="b">Комплексное число</param>
+        /// <returns>Результат</returns>
         private static Complex Multiplication(Complex a, Complex b)
         {
             CheckIsNull(a, b);
@@ -98,6 +139,12 @@ namespace Lesson5
             return res;
         }
 
+        /// <summary>
+        /// Метод вычитания из комплексного числа a числа b
+        /// </summary>
+        /// <param name="a">Комплексное число</param>
+        /// <param name="b">Комплексное число</param>
+        /// <returns>Результат</returns>
         private static Complex Subtract(Complex a, Complex b)
         {
             CheckIsNull(a, b);
@@ -111,26 +158,52 @@ namespace Lesson5
             return res;
         }
 
+        /// <summary>
+        /// Перегрузка оператора != для комплексных чисел
+        /// </summary>
+        /// <param name="a">Комплексное число</param>
+        /// <param name="b">Комплексное число</param>
+        /// <returns>Результат</returns>
         public static Complex operator +(Complex a, Complex b) => Complex.Sum(a, b);
 
+        /// <summary>
+        /// Перегрузка оператора != для комплексных чисел
+        /// </summary>
+        /// <param name="a">Комплексное число</param>
+        /// <param name="b">Комплексное число</param>
+        /// <returns>Результат</returns>
         public static Complex operator -(Complex a, Complex b) => Complex.Subtract(a, b);
 
+        /// <summary>
+        /// Перегрузка оператора != для комплексных чисел
+        /// </summary>
+        /// <param name="a">Комплексное число</param>
+        /// <param name="b">Комплексное число</param>
+        /// <returns>Результат</returns>
         public static Complex operator *(Complex a, Complex b) => Complex.Multiplication(a, b);
 
+        /// <summary>
+        /// Перегрузка оператора != для комплексных чисел
+        /// </summary>
+        /// <param name="a">Комплексное число</param>
+        /// <param name="b">Комплексное число</param>
+        /// <returns>Результат</returns>
         public static bool operator ==(Complex a, Complex b) => a.Equals(b);
 
+        /// <summary>
+        /// Перегрузка оператора != для комплексных чисел
+        /// </summary>
+        /// <param name="a">Комплексное число</param>
+        /// <param name="b">Комплексное число</param>
+        /// <returns>Результат</returns>
         public static bool operator !=(Complex a, Complex b) => !a.Equals(b);
 
-        public override string ToString() => $"{this._real} + i{this._imaginary}";
-
-        private static void CheckIsNull(Complex a)
-        {
-            if (a is null)
-            {
-                throw new NullReferenceException();
-            }
-        }
-
+        /// <summary>
+        /// Метод проверяет аргументы на null
+        /// </summary>
+        /// <param name="a">Число a</param>
+        /// <param name="b">Число b</param>
+        /// <exception cref="NullReferenceException">Генерируется исключение</exception>
         private static void CheckIsNull(Complex a, Complex b)
         {
             if (a is null || b is null)

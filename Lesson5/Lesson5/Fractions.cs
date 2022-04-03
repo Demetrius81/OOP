@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Lesson5
 {
+    /// <summary>
+    /// Класс рациональных чисел
+    /// </summary>
     public class Fractions
     {
 
@@ -27,9 +28,9 @@ namespace Lesson5
        ??? % ??? При делении двух рациональных чисел остатка от деления не образуется!!!
                    Я конечно переопределил, но это глупость!
 
-
         */
 
+        #region Fields and properties
 
         private int _numerator;
 
@@ -44,6 +45,10 @@ namespace Lesson5
         /// Знаменатель
         /// </summary>
         public int Denominator { get => _denominator; set => _denominator = value; }
+
+        #endregion
+
+        #region Ctors
 
         public Fractions()
         {
@@ -71,12 +76,14 @@ namespace Lesson5
             }
         }
 
+        #endregion
+
         /// <summary>
         /// Метод для нахождения наибольшего общего делителя
         /// </summary>
         /// <param name="numerator">Числитель</param>
         /// <param name="denominator">Знаменатель</param>
-        /// <returns></returns>
+        /// <returns>Наибольший общий делитель</returns>
         private static int CalculatingTheGreatestCommonDivisor(int numerator, int denominator)
         {
             int GreatestCommonDivisor = 1;
@@ -147,6 +154,10 @@ namespace Lesson5
             }
         }
 
+        /// <summary>
+        /// Метод сокращения рационального числа
+        /// </summary>
+        /// <param name="fraction">Число</param>
         private static void FractionReduction(Fractions fraction)
         {
             CheckIsNull(fraction);
@@ -158,6 +169,11 @@ namespace Lesson5
             fraction._denominator /= GreatestCommonDivisor;
         }
 
+        /// <summary>
+        /// Метод приведения к общему знаменателю двух рациональных чисел
+        /// </summary>
+        /// <param name="fraction1">Число</param>
+        /// <param name="fraction2">Число</param>
         private static void ToACommonDenominator(Fractions fraction1, Fractions fraction2)
         {
             CheckIsNull(fraction1, fraction2);
@@ -173,6 +189,11 @@ namespace Lesson5
             fraction1._denominator *= temp;
         }
 
+        /// <summary>
+        /// Переопределение метода Equals
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (obj is null)
@@ -199,6 +220,11 @@ namespace Lesson5
             return isTrue;
         }
 
+        /// <summary>
+        /// Перегрузка метода Equals
+        /// </summary>
+        /// <param name="fraction"></param>
+        /// <returns></returns>
         public bool Equals(Fractions fraction)
         {
             if (fraction is null)
@@ -219,15 +245,40 @@ namespace Lesson5
             return isTrue;
         }
 
-        public override string ToString()
-        {
-            return $"{this._numerator}/{this._denominator}";
-        }
+        /// <summary>
+        /// Переопределение метода GetHashCode
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode() => _numerator ^ _denominator;
 
+        /// <summary>
+        /// Переопределение метода ToString
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() => $"{this._numerator}/{this._denominator}";
+
+        /// <summary>
+        /// Перегрузка оператора == для рациональных чисел
+        /// </summary>
+        /// <param name="fraction1">Рациональное число</param>
+        /// <param name="fraction2">Рациональное число</param>
+        /// <returns>Результат</returns>
         public static bool operator ==(Fractions fraction1, Fractions fraction2) => fraction1.Equals(fraction2);
 
+        /// <summary>
+        /// Перегрузка оператора != для рациональных чисел
+        /// </summary>
+        /// <param name="fraction1">Рациональное число</param>
+        /// <param name="fraction2">Рациональное число</param>
+        /// <returns>Результат</returns>
         public static bool operator !=(Fractions fraction1, Fractions fraction2) => !fraction1.Equals(fraction2);
 
+        /// <summary>
+        /// Перегрузка оператора < для рациональных чисел
+        /// </summary>
+        /// <param name="fraction1">Рациональное число</param>
+        /// <param name="fraction2">Рациональное число</param>
+        /// <returns>Результат</returns>
         public static bool operator <(Fractions fraction1, Fractions fraction2)
         {            
             CheckIsNull(fraction1, fraction2);
@@ -249,6 +300,13 @@ namespace Lesson5
             return false;
         }
 
+
+        /// <summary>
+        /// Перегрузка оператора > для рациональных чисел
+        /// </summary>
+        /// <param name="fraction1">Рациональное число</param>
+        /// <param name="fraction2">Рациональное число</param>
+        /// <returns>Результат</returns>
         public static bool operator >(Fractions fraction1, Fractions fraction2)
         {
             CheckIsNull(fraction1, fraction2);
@@ -270,6 +328,12 @@ namespace Lesson5
             return false;
         }
 
+        /// <summary>
+        /// Перегрузка оператора <= для рациональных чисел
+        /// </summary>
+        /// <param name="fraction1">Рациональное число</param>
+        /// <param name="fraction2">Рациональное число</param>
+        /// <returns>Результат</returns>
         public static bool operator <=(Fractions fraction1, Fractions fraction2)
         {
             CheckIsNull(fraction1, fraction2);
@@ -291,6 +355,12 @@ namespace Lesson5
             return false;
         }
 
+        /// <summary>
+        /// Перегрузка оператора >= для рациональных чисел
+        /// </summary>
+        /// <param name="fraction1">Рациональное число</param>
+        /// <param name="fraction2">Рациональное число</param>
+        /// <returns>Результат</returns>
         public static bool operator >=(Fractions fraction1, Fractions fraction2)
         {
             CheckIsNull(fraction1, fraction2);
@@ -312,6 +382,12 @@ namespace Lesson5
             return false;
         }
 
+        /// <summary>
+        /// Перегрузка оператора + для рациональных чисел
+        /// </summary>
+        /// <param name="fraction1">Рациональное число</param>
+        /// <param name="fraction2">Рациональное число</param>
+        /// <returns>Результат</returns>
         public static Fractions operator +(Fractions fraction1, Fractions fraction2)
         {
             CheckIsNull(fraction1, fraction2);
@@ -329,6 +405,12 @@ namespace Lesson5
             return fraction;
         }
 
+        /// <summary>
+        /// Перегрузка оператора - для рациональных чисел
+        /// </summary>
+        /// <param name="fraction1">Рациональное число</param>
+        /// <param name="fraction2">Рациональное число</param>
+        /// <returns>Результат</returns>
         public static Fractions operator -(Fractions fraction1, Fractions fraction2)
         {
             CheckIsNull(fraction1, fraction2);
@@ -346,6 +428,11 @@ namespace Lesson5
             return fraction;
         }
 
+        /// <summary>
+        /// Перегрузка оператора ++ для рациональных чисел
+        /// </summary>
+        /// <param name="fraction">Рациональное число</param>        
+        /// <returns>Результат</returns>
         public static Fractions operator ++(Fractions fraction)
         {
             CheckIsNull(fraction);
@@ -355,6 +442,11 @@ namespace Lesson5
             return fraction;
         }
 
+        /// <summary>
+        /// Перегрузка оператора -- для рациональных чисел
+        /// </summary>
+        /// <param name="fraction">Рациональное число</param>        
+        /// <returns>Результат</returns>
         public static Fractions operator --(Fractions fraction)
         {
             CheckIsNull(fraction);
@@ -364,6 +456,12 @@ namespace Lesson5
             return fraction;
         }
 
+        /// <summary>
+        /// Перегрузка оператора * для рациональных чисел
+        /// </summary>
+        /// <param name="fraction1">Рациональное число</param>
+        /// <param name="fraction2">Рациональное число</param>
+        /// <returns>Результат</returns>
         public static Fractions operator *(Fractions fraction1, Fractions fraction2)
         {
             CheckIsNull(fraction1, fraction2);
@@ -379,6 +477,12 @@ namespace Lesson5
             return fraction;
         }
 
+        /// <summary>
+        /// Перегрузка оператора / для рациональных чисел
+        /// </summary>
+        /// <param name="fraction1">Рациональное число</param>
+        /// <param name="fraction2">Рациональное число</param>
+        /// <returns>Результат</returns>
         public static Fractions operator /(Fractions fraction1, Fractions fraction2)
         {
             CheckIsNull(fraction1, fraction2);
@@ -394,6 +498,12 @@ namespace Lesson5
             return fraction;
         }
 
+        /// <summary>
+        /// Перегрузка оператора % для рациональных чисел
+        /// </summary>
+        /// <param name="fraction1">Рациональное число</param>
+        /// <param name="fraction2">Рациональное число</param>
+        /// <returns>Результат</returns>
         public static int operator %(Fractions fraction1, Fractions fraction2)
         {
             CheckIsNull(fraction1, fraction2);
@@ -401,6 +511,11 @@ namespace Lesson5
             return fraction1._numerator % fraction2._numerator;
         }
 
+        /// <summary>
+        /// Перегрузка оператора неявного приведения для рационального числа
+        /// </summary>
+        /// <param name="fraction">Рациональное число</param>        
+        /// <returns>Результат</returns>
         public static implicit operator float(Fractions fraction)
         {
             CheckIsNull(fraction);
@@ -408,6 +523,11 @@ namespace Lesson5
             return fraction._numerator / fraction._denominator;
         }
 
+        /// <summary>
+        /// Перегрузка оператора явного приведения для рационального числа
+        /// </summary>
+        /// <param name="fraction">Рациональное число</param>        
+        /// <returns>Результат</returns>
         public static explicit operator int(Fractions fraction)
         {
             CheckIsNull(fraction);
@@ -415,6 +535,11 @@ namespace Lesson5
             return (int)(fraction._numerator / fraction._denominator);
         }
 
+        /// <summary>
+        /// Метод проверяет аргумент на null
+        /// </summary>
+        /// <param name="fraction">Рациональное число</param>
+        /// <exception cref="NullReferenceException">Генерируется исключение</exception>
         private static void CheckIsNull(Fractions fraction)
         {
             if (fraction is null)
@@ -423,6 +548,12 @@ namespace Lesson5
             }
         }
 
+        /// <summary>
+        /// Метод проверяет аргументы на null
+        /// </summary>
+        /// <param name="a">Рациональное число</param>
+        /// <param name="b">Рациональное число</param>
+        /// <exception cref="NullReferenceException">Генерируется исключение</exception>
         private static void CheckIsNull(Fractions fraction1, Fractions fraction2)
         {
             if (fraction1 is null || fraction2 is null)
