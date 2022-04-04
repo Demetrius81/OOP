@@ -63,33 +63,20 @@ namespace Lesson3.Task1
         /// <summary>
         /// Конструктор
         /// </summary>
-        public BankAccount()
-        {
-            IncrementAccountId();
-        }
+        public BankAccount() : this(0, 0) { }
 
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="currentBalance">Текущий баланс</param>
-        public BankAccount(decimal currentBalance)
-        {
-            IncrementAccountId();
-
-            _currentBalance = currentBalance;
-        }
+        public BankAccount(decimal currentBalance) : this(0, currentBalance) { }
 
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="bankAccountType">Тип Банковского счета</param>
-        public BankAccount(BankAccountType bankAccountType)
-        {
-            IncrementAccountId();
-
-            _bankAccountType = bankAccountType;
-        }
-
+        public BankAccount(BankAccountType bankAccountType) : this(bankAccountType, 0) { }
+        
         /// <summary>
         /// Конструктор
         /// </summary>
