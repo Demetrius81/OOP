@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lesson6.Task2
 {
-    internal abstract class Figure : IFigure
+    internal class Figure : IFigure
     {
         /*
          V Создать класс Figure для работы с геометрическими фигурами. 
@@ -33,18 +33,14 @@ namespace Lesson6.Task2
 
         private int _positionY;
 
-        internal FigureColor Color { get => _color; set => _color = value; }
+        public FigureColor Color { get => _color; set => _color = value; }
 
-        internal bool Visible { get => _visible; set => _visible = value; }
+        public bool Visible { get => _visible; set => _visible = value; }
 
-        internal int PositionX { get => _positionX; set => _positionX = value; }
+        public int PositionX { get => _positionX; set => _positionX = value; }
 
-        internal int PositionY { get => _positionY; set => _positionY = value; }
-        FigureColor IFigure.Color { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        bool IFigure.Visible { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        int IFigure.PositionX { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        int IFigure.PositionY { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
+        public int PositionY { get => _positionY; set => _positionY = value; }
+       
         /// <summary>
         /// Конструктор класса Figure
         /// </summary>
@@ -55,8 +51,11 @@ namespace Lesson6.Task2
         public Figure(int x, int y, bool isVisible, FigureColor color)
         {
             _positionX = x;
+
             _positionY = y;
+
             _visible = isVisible;
+
             _color = color;
         }
 
@@ -81,9 +80,9 @@ namespace Lesson6.Task2
             Console.WriteLine($"Фигура имеет координаты ({PositionX}, {PositionY})");
         }
 
-        public void Verticalmove(int distance)
+        public void VerticalMove(int distance)
         {
-            _positionX -= distance;
+            _positionY += distance;
         }
     }
 }

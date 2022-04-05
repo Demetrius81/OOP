@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lesson3.Task1
+namespace Lesson6.Task1
 {
     internal static class Demo
     {
@@ -25,6 +25,8 @@ namespace Lesson3.Task1
             Console.WriteLine("Создаем счет на 30000");
 
             BankAccount bankAccount2 = new BankAccount(BankAccountType.deposit, 30000);
+
+            Console.WriteLine(bankAccount2.ToString());
 
             Console.WriteLine("Работа оператора ==");
 

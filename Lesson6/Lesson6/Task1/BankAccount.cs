@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Lesson3.Task1
+namespace Lesson6.Task1
 {
     /*
      V Для класса банковский счет переопределить операторы == 

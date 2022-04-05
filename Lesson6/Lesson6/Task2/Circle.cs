@@ -8,6 +8,9 @@ namespace Lesson6.Task2
     {
         private int _radius;
 
+        /// <summary>
+        /// Радиус окружности
+        /// </summary>
         public int Radius { get => _radius;}
 
         public Circle(int x, int y, int rad) : this(x, y, true, FigureColor.White, rad)

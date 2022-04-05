@@ -36,7 +36,7 @@ namespace Lesson6.Task2
         /// Метод движения по вертикали
         /// </summary>
         /// <param name="distance"></param>
-        void Verticalmove(int distance);
+        void VerticalMove(int distance);
         
         /// <summary>
         /// Метод изменения цвета
