@@ -4,18 +4,18 @@ using System.Text;
 
 namespace Lesson6.Task2
 {
-    internal class Figure
+    internal abstract class Figure : IFigure
     {
         /*
-         * Создать класс Figure для работы с геометрическими фигурами. 
-         * Вкачестве полей класса задаются цвет фигуры, 
-         * состояние «видимое/невидимое». 
-         * Реализовать операции: передвижение геометрической фигуры по горизонтали, 
-         * по вертикали, 
-         * изменение цвета, 
-         * опрос состояния (видимый/невидимый). 
-         * Метод вывода на экран должен выводить состояние всех полей объекта. 
-         * Создать класс Point (точка) как потомок геометрической фигуры. 
+         V Создать класс Figure для работы с геометрическими фигурами. 
+         V Вкачестве полей класса задаются цвет фигуры, 
+         V состояние «видимое/невидимое». 
+         V Реализовать операции: передвижение геометрической фигуры по горизонтали, 
+         V по вертикали, 
+         V изменение цвета, 
+         V опрос состояния (видимый/невидимый). 
+         V Метод вывода на экран должен выводить состояние всех полей объекта. 
+         V Создать класс Point (точка) как потомок геометрической фигуры. 
          * Создать класс Circle (окружность) как потомок точки. 
          * В класс Circle добавить метод, который вычисляет площадь окружности. 
          * Создать класс Rectangle (прямоугольник) как потомок точки,
@@ -25,5 +25,65 @@ namespace Lesson6.Task2
          */
 
 
+        private FigureColor _color;
+
+        private bool _visible;
+
+        private int _positionX;
+
+        private int _positionY;
+
+        internal FigureColor Color { get => _color; set => _color = value; }
+
+        internal bool Visible { get => _visible; set => _visible = value; }
+
+        internal int PositionX { get => _positionX; set => _positionX = value; }
+
+        internal int PositionY { get => _positionY; set => _positionY = value; }
+        FigureColor IFigure.Color { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        bool IFigure.Visible { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        int IFigure.PositionX { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        int IFigure.PositionY { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        /// <summary>
+        /// Конструктор класса Figure
+        /// </summary>
+        /// <param name="x">int координата X</param>
+        /// <param name="y">int координата Y</param>
+        /// <param name="isVisible">bool видима или нет</param>
+        /// <param name="color">FigureColor цвет фигуры</param>
+        public Figure(int x, int y, bool isVisible, FigureColor color)
+        {
+            _positionX = x;
+            _positionY = y;
+            _visible = isVisible;
+            _color = color;
+        }
+
+        public Figure(int x, int y) : this(x, y, true, FigureColor.White) { }
+
+        public void ChangeColor(FigureColor color)
+        {
+            _color = color;
+        }
+
+        public void HorisontalMove(int distance)
+        {
+            _positionX += distance;
+        }
+
+        public bool IsFigureVisible() => _visible;
+
+        public virtual void PrintFigure()
+        {
+            Console.WriteLine($"Фигура {Color} цвета");
+            Console.WriteLine(Visible ? "Фигура видима" : "Фигура невидима");
+            Console.WriteLine($"Фигура имеет координаты ({PositionX}, {PositionY})");
+        }
+
+        public void Verticalmove(int distance)
+        {
+            _positionX -= distance;
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace Lesson3.Task1
     /// <summary>
     /// Тип банковского счета
     /// </summary>
-    enum BankAccountType
+    public enum BankAccountType
     {
         current = 0x0001,
         credit = 0x0010,
