@@ -30,7 +30,7 @@ namespace Lesson6.Task1
 
             Console.WriteLine("Работа оператора ==");
 
-            Console.WriteLine(bankAccount2==bankAccount1);
+            Console.WriteLine(bankAccount2 == bankAccount1);
 
             Console.WriteLine("Работа оператора !=");
 

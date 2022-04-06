@@ -31,13 +31,13 @@ namespace Lesson6.Task2
         /// </summary>
         /// <param name="distance"></param>
         void HorisontalMove(int distance);
-        
+
         /// <summary>
         /// Метод движения по вертикали
         /// </summary>
         /// <param name="distance"></param>
         void VerticalMove(int distance);
-        
+
         /// <summary>
         /// Метод изменения цвета
         /// </summary>

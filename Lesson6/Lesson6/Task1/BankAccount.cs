@@ -76,7 +76,7 @@ namespace Lesson6.Task1
         /// </summary>
         /// <param name="bankAccountType">Тип Банковского счета</param>
         public BankAccount(BankAccountType bankAccountType) : this(bankAccountType, 0) { }
-        
+
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -204,6 +204,7 @@ namespace Lesson6.Task1
             }
             return false;
         }
+
         /// <summary>
         /// Метод осуществляет перевод
         /// </summary>
@@ -244,6 +245,6 @@ namespace Lesson6.Task1
         /// <param name="bankAccount2">BankAccount аккаунт 2</param>
         /// <returns>bool результат</returns>
         public static bool operator !=(BankAccount bankAccount1, BankAccount bankAccount2) => !bankAccount1.Equals(bankAccount2);
-        
+
     }
 }

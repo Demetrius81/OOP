@@ -28,6 +28,8 @@ namespace Lesson6.Task2
 
             figure.PrintFigure();
 
+            Console.WriteLine();
+
             Console.WriteLine("Создаем точку");
 
             Point point = new Point(3, 11);
@@ -44,6 +46,8 @@ namespace Lesson6.Task2
 
             point.PrintFigure();
 
+            Console.WriteLine();
+
             Console.WriteLine("Создаем окружность");
 
             Circle circle = new Circle(12, -8, false, FigureColor.Blue, 45);
@@ -59,6 +63,8 @@ namespace Lesson6.Task2
             circle.ChangeColor(FigureColor.White);
 
             circle.PrintFigure();
+
+            Console.WriteLine();
 
             Console.WriteLine("Создаем прямоугольник");
 

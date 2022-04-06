@@ -4,26 +4,25 @@ using System.Text;
 
 namespace Lesson6.Task2
 {
+    /*
+     V Создать класс Figure для работы с геометрическими фигурами. 
+     V Вкачестве полей класса задаются цвет фигуры, 
+     V состояние «видимое/невидимое». 
+     V Реализовать операции: передвижение геометрической фигуры по горизонтали, 
+     V по вертикали, 
+     V изменение цвета, 
+     V опрос состояния (видимый/невидимый). 
+     V Метод вывода на экран должен выводить состояние всех полей объекта. 
+     V Точка, окружность, прямоугольник должны поддерживать методы передвижения по горизонтали и вертикали, изменения цвета.
+     * 
+     */
+
+    /// <summary>
+    /// Класс Figure
+    /// </summary>
     internal class Figure : IFigure
     {
-        /*
-         V Создать класс Figure для работы с геометрическими фигурами. 
-         V Вкачестве полей класса задаются цвет фигуры, 
-         V состояние «видимое/невидимое». 
-         V Реализовать операции: передвижение геометрической фигуры по горизонтали, 
-         V по вертикали, 
-         V изменение цвета, 
-         V опрос состояния (видимый/невидимый). 
-         V Метод вывода на экран должен выводить состояние всех полей объекта. 
-         V Создать класс Point (точка) как потомок геометрической фигуры. 
-         * Создать класс Circle (окружность) как потомок точки. 
-         * В класс Circle добавить метод, который вычисляет площадь окружности. 
-         * Создать класс Rectangle (прямоугольник) как потомок точки,
-         * реализовать метод вычисления площади прямоугольника. 
-         * Точка, окружность, прямоугольник должны поддерживать методы передвижения по горизонтали и вертикали, изменения цвета.
-         * 
-         */
-
+        #region Fields and properties
 
         private FigureColor _color;
 
@@ -40,7 +39,11 @@ namespace Lesson6.Task2
         public int PositionX { get => _positionX; set => _positionX = value; }
 
         public int PositionY { get => _positionY; set => _positionY = value; }
-       
+
+        #endregion
+
+        #region Constructors
+
         /// <summary>
         /// Конструктор класса Figure
         /// </summary>
@@ -59,8 +62,15 @@ namespace Lesson6.Task2
             _color = color;
         }
 
+        /// <summary>
+        /// Конструктор класса Figure
+        /// </summary>
+        /// <param name="x">int координата X</param>
+        /// <param name="y">int координата Y</param>        
         public Figure(int x, int y) : this(x, y, true, FigureColor.White) { }
 
+        #endregion
+                
         public void ChangeColor(FigureColor color)
         {
             _color = color;
@@ -71,6 +81,11 @@ namespace Lesson6.Task2
             _positionX += distance;
         }
 
+        public void VerticalMove(int distance)
+        {
+            _positionY += distance;
+        }
+
         public bool IsFigureVisible() => _visible;
 
         public virtual void PrintFigure()
@@ -78,11 +93,6 @@ namespace Lesson6.Task2
             Console.WriteLine($"Фигура {Color} цвета");
             Console.WriteLine(Visible ? "Фигура видима" : "Фигура невидима");
             Console.WriteLine($"Фигура имеет координаты ({PositionX}, {PositionY})");
-        }
-
-        public void VerticalMove(int distance)
-        {
-            _positionY += distance;
         }
     }
 }

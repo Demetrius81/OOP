@@ -4,8 +4,18 @@ using System.Text;
 
 namespace Lesson6.Task2
 {
+    /*
+    V Создать класс Rectangle(прямоугольник) как потомок точки,
+    V реализовать метод вычисления площади прямоугольника.
+    */
+
+    /// <summary>
+    /// Класс Rectangle
+    /// </summary>
     internal sealed class Rectangle : Point
     {
+        #region Fields and properties
+
         private int _height;
 
         private int _width;
@@ -20,15 +30,37 @@ namespace Lesson6.Task2
         /// </summary>
         public int Width { get => _width; }
 
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Конструктор класса Rectangle
+        /// </summary>
+        /// <param name="x">int координата X</param>
+        /// <param name="y">int координата Y</param>
+        /// <param name="height"></param>
+        /// <param name="width"></param>
         public Rectangle(int x, int y, int height, int width) :
             this(x, y, true, FigureColor.Orange, height, width)
         { }
-        
+
+        /// <summary>
+        /// Конструктор класса Rectangle
+        /// </summary>
+        /// <param name="x">int координата X</param>
+        /// <param name="y">int координата Y</param>
+        /// <param name="isVisible">bool видим или нет</param>
+        /// <param name="color">FigureColor цвет фигуры</param>
+        /// <param name="height">int высота прямоугольника</param>
+        /// <param name="width">int ширина прямоугольника</param>
         public Rectangle(int x, int y, bool isVisible, FigureColor color, int height, int width) : base(x, y, isVisible, color)
         {
             _width = width;
             _height = height;
         }
+
+        #endregion
 
         /// <summary>
         /// Метод вывода на экран прямоугольника
