@@ -1,34 +1,36 @@
 ﻿using System;
-using
-namespace Lesson2.Task2
+
+namespace Lesson3.Task2
 {
     internal class Demo
     {
-        public static void Task2Demo()
+        public static void TaskDemo()
         {
             Console.Clear();
 
-            Console.WriteLine("Демонстрация работы второй задачи.");
+            Console.WriteLine("Переворачиваем слово \"Афроамериканец\" при помощи длинного метода с циклом");
 
-            BankAccount bankAccount = new BankAccount();
+            Console.WriteLine();
 
-            bankAccount.InitiateAccount(BankAccountType.deposit, 150000);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
 
-            BankAccount bankAccount2 = new BankAccount();
+            Console.WriteLine(Task2.StringTurner.StringReverseWithCycle("Афроамериканец"));
 
-            bankAccount2.InitiateAccount(BankAccountType.current, 10000);
+            Console.ForegroundColor = ConsoleColor.Gray;
 
-            Console.WriteLine($"Счет номер: {bankAccount.Get_AccountId()}");
+            Console.WriteLine();
 
-            Console.WriteLine($"Тип счета: {bankAccount.Get_BankAccountType()}");
+            Console.WriteLine("Переворачиваем слово \"Синхроциклотрон\" при помощи короткого метода в одну строку");
 
-            Console.WriteLine($"Текущий баланс: {bankAccount.Get_CurrentBalance()}");
+            Console.WriteLine();
 
-            Console.WriteLine($"Счет номер: {bankAccount2.Get_AccountId()}");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
 
-            Console.WriteLine($"Тип счета: {bankAccount2.Get_BankAccountType()}");
+            Console.WriteLine(Task2.StringTurner.StringReverse("Синхроциклотрон"));
 
-            Console.WriteLine($"Текущий баланс: {bankAccount2.Get_CurrentBalance()}");
+            Console.ForegroundColor = ConsoleColor.Gray;
+
+            Console.WriteLine();
 
             Console.WriteLine($"To continue press any key...");
 
