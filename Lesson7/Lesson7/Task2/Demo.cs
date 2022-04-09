@@ -13,23 +13,7 @@ namespace Lesson7.Task2
             Console.WriteLine($"Демонстрация работы второй задачи.");
 
             Console.WriteLine();
-
-            Console.WriteLine("Создаем фигуру");
-
-            Figure figure = new Figure(5, 7, true, FigureColor.Red);
-
-            figure.PrintFigure();
-
-            Console.WriteLine("Перемещаем фигуру по горизонтали и вертикали");
-
-            figure.HorisontalMove(3);
-
-            figure.VerticalMove(2);
-
-            figure.PrintFigure();
-
-            Console.WriteLine();
-
+            
             Console.WriteLine("Создаем точку");
 
             Point point = new Point(3, 11);
@@ -50,7 +34,9 @@ namespace Lesson7.Task2
 
             Console.WriteLine("Создаем окружность");
 
-            Circle circle = new Circle(12, -8, false, FigureColor.Blue, 45);
+            IFlatFigure circl = new Circle(12, -8, false, FigureColor.Blue, 45);
+
+            Circle circle = circl as Circle;
 
             circle.PrintFigure();
 
@@ -68,7 +54,9 @@ namespace Lesson7.Task2
 
             Console.WriteLine("Создаем прямоугольник");
 
-            Rectangle rectangle = new Rectangle(2, 14, 30, 12);
+            IFlatFigure rectangl = new Rectangle(2, 14, 30, 12);
+
+            Rectangle rectangle = (Rectangle)rectangl;
 
             rectangle.PrintFigure();
 

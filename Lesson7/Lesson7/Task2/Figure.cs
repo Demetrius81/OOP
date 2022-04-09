@@ -5,22 +5,16 @@ using System.Text;
 namespace Lesson7.Task2
 {
     /*
-     V Создать класс Figure для работы с геометрическими фигурами. 
-     V Вкачестве полей класса задаются цвет фигуры, 
-     V состояние «видимое/невидимое». 
-     V Реализовать операции: передвижение геометрической фигуры по горизонтали, 
-     V по вертикали, 
-     V изменение цвета, 
-     V опрос состояния (видимый/невидимый). 
-     V Метод вывода на экран должен выводить состояние всех полей объекта. 
-     V Точка, окружность, прямоугольник должны поддерживать методы передвижения по горизонтали и вертикали, изменения цвета.
-     * 
+     * Подумать, какие методы можно объявить в интерфейсе, 
+     * нужно ли объявлять абстрактный класс, 
+     * какие методы и поля будут в абстрактном классе, 
+     * какие методы будут виртуальными, какие перегруженными.
      */
 
     /// <summary>
     /// Класс Figure
     /// </summary>
-    internal class Figure : IFigure
+    internal abstract class Figure : IFigure
     {
         #region Fields and properties
 
@@ -88,11 +82,6 @@ namespace Lesson7.Task2
 
         public bool IsFigureVisible() => _visible;
 
-        public virtual void PrintFigure()
-        {
-            Console.WriteLine($"Фигура {Color} цвета");
-            Console.WriteLine(Visible ? "Фигура видима" : "Фигура невидима");
-            Console.WriteLine($"Фигура имеет координаты ({PositionX}, {PositionY})");
-        }
+        public abstract void PrintFigure();
     }
 }

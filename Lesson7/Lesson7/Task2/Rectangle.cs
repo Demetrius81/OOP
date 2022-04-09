@@ -12,7 +12,7 @@ namespace Lesson7.Task2
     /// <summary>
     /// Класс Rectangle
     /// </summary>
-    internal sealed class Rectangle : Point
+    internal sealed class Rectangle : Point, IFlatFigure
     {
         #region Fields and properties
 

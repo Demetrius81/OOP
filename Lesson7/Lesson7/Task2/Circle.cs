@@ -12,7 +12,7 @@ namespace Lesson7.Task2
     /// <summary>
     /// Класс Circle
     /// </summary>
-    internal sealed class Circle : Point
+    internal sealed class Circle : Point, IFlatFigure
     {
         #region Fields and properties
 
