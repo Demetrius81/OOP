@@ -7,7 +7,8 @@ namespace Lesson7
     {
         static void Main(string[] args)
         {
-            Task1.Demo.Test();
+            Task1.Demo.TaskDemo();
+            Task2.Demo.TaskDemo();
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Lesson7.Task1
     internal static class Demo
     {
 
-        public static void Test()
+        public static void TaskDemo()
         {
             ICoder aCoder = new ACoder();
 
@@ -17,8 +17,15 @@ namespace Lesson7.Task1
 
             string encodingText = aCoder.Encode(text);
 
-
             Console.WriteLine("Тест класса ACoder");
+
+            Console.WriteLine("Исходный текст");
+
+            Console.WriteLine();
+
+            Console.WriteLine(text);
+
+            Console.WriteLine();
 
             Console.WriteLine("Зашифрованный текст");
 
@@ -47,6 +54,14 @@ namespace Lesson7.Task1
 
             Console.WriteLine("Тест класса BCoder");
 
+            Console.WriteLine("Исходный текст");
+
+            Console.WriteLine();
+
+            Console.WriteLine(text);
+
+            Console.WriteLine();
+
             Console.WriteLine("Зашифрованный текст");
 
             Console.WriteLine();
@@ -62,6 +77,10 @@ namespace Lesson7.Task1
             Console.WriteLine();
 
             Console.WriteLine(decodingText);
+
+            Console.WriteLine();
+
+            Console.WriteLine($"To continue press any key...");
 
             Console.ReadKey();
         }
