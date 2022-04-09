@@ -6,7 +6,23 @@ namespace Lesson7
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Task1.ACoder q = new Task1.ACoder();
+
+            //string text = "AaZzАаЯя";
+
+            //string code = q.Encode(text);
+
+            //Console.WriteLine(code);
+
+            //string uncode = q.Decode(code);
+
+            //Console.WriteLine(uncode);
+
+
+
+
+
+            Console.ReadKey();
         }
     }
 }
