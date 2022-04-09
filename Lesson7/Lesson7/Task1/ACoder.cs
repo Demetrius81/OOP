@@ -11,9 +11,19 @@ namespace Lesson7.Task1
        (В результате такого сдвига буква А становится буквой Б).
      */
 
+    /// <summary>
+    /// Метод шифрования строки посредством сдвига символа
+    /// </summary>
     internal class ACoder : ICoder
     {
-
+        public const int EN_UPPERCASE_FIRST_UTF16 = 'A';
+        public const int EN_UPPERCASE_LAST_UTF16 = 'Z';
+        public const int EN_LOWERRCASE_FIRST_UTF16 = 'a';
+        public const int EN_LOWERRCASE_LAST_UTF16 = 'z';
+        public const int RU_UPPERCASE_FIRST_UTF16 = 'А';
+        public const int RU_UPPERCASE_LAST_UTF16 = 'Я';
+        public const int RU_LOWERRCASE_FIRST_UTF16 = 'а';
+        public const int RU_LOWERRCASE_LAST_UTF16 = 'я';
 
         public string Encode(string text)
         {
@@ -42,20 +52,56 @@ namespace Lesson7.Task1
             return new string(decryptedCharArr);
         }
 
-        private char ReplaceCharToEncrypt(char sym) =>
-                    sym == 90 ? (char)65 :
-                    sym == 122 ? (char)97 :
-                    sym == 1071 ? (char)1040 :
-                    sym == 1103 ? (char)1072 : (char)(sym + 1);
+        /// <summary>
+        /// Метод заменяет символ другим символом по определенному алгоритму
+        /// </summary>
+        /// <param name="sym">char исходный символ</param>
+        /// <returns>char измененный символ</returns>
+        private char ReplaceCharToEncrypt(char sym)
+        {
+            char encryptedSym;
 
+            if (sym < EN_UPPERCASE_FIRST_UTF16 || sym > EN_UPPERCASE_LAST_UTF16 &&
+                sym < EN_LOWERRCASE_FIRST_UTF16 || sym > EN_LOWERRCASE_LAST_UTF16 &&
+                sym < RU_UPPERCASE_FIRST_UTF16 || sym > RU_UPPERCASE_LAST_UTF16 &&
+                sym < RU_LOWERRCASE_FIRST_UTF16 || sym > RU_LOWERRCASE_LAST_UTF16)
+            {
+                encryptedSym = sym;
+            }
+            else
+            {
+                encryptedSym = sym == EN_UPPERCASE_LAST_UTF16 ? (char)EN_UPPERCASE_FIRST_UTF16 :
+                    sym == EN_LOWERRCASE_LAST_UTF16 ? (char)EN_LOWERRCASE_FIRST_UTF16 :
+                    sym == RU_UPPERCASE_LAST_UTF16 ? (char)RU_UPPERCASE_FIRST_UTF16 :
+                    sym == RU_LOWERRCASE_LAST_UTF16 ? (char)RU_LOWERRCASE_FIRST_UTF16 : (char)(sym + 1);
+            }
+            return encryptedSym;
+        }
 
+        /// <summary>
+        /// Метод заменяет символ другим символом по определенному алгоритму
+        /// </summary>
+        /// <param name="sym">char исходный символ</param>
+        /// <returns>char измененный символ</returns>
+        private char ReplaceCharToDecrypt(char sym)
+        {
+            char decryptedSym;
 
-        private char ReplaceCharToDecrypt(char sym) =>
-                    sym == 65 ? (char)90 :
-                    sym == 97 ? (char)122 :
-                    sym == 1040 ? (char)1071 :
-                    sym == 1072 ? (char)1103 : (char)(sym - 1);
-
+            if (sym < EN_UPPERCASE_FIRST_UTF16 || sym > EN_UPPERCASE_LAST_UTF16 &&
+                sym < EN_LOWERRCASE_FIRST_UTF16 || sym > EN_LOWERRCASE_LAST_UTF16 &&
+                sym < RU_UPPERCASE_FIRST_UTF16 || sym > RU_UPPERCASE_LAST_UTF16 &&
+                sym < RU_LOWERRCASE_FIRST_UTF16 || sym > RU_LOWERRCASE_LAST_UTF16)
+            {
+                decryptedSym = sym;
+            }
+            else
+            {
+                decryptedSym = sym == EN_UPPERCASE_FIRST_UTF16 ? (char)EN_UPPERCASE_LAST_UTF16 :
+                    sym == EN_LOWERRCASE_FIRST_UTF16 ? (char)EN_LOWERRCASE_LAST_UTF16 :
+                    sym == RU_UPPERCASE_FIRST_UTF16 ? (char)RU_UPPERCASE_LAST_UTF16 :
+                    sym == RU_LOWERRCASE_FIRST_UTF16 ? (char)RU_LOWERRCASE_LAST_UTF16 : (char)(sym - 1);
+            }
+            return decryptedSym;
+        }
     }
-
 }
